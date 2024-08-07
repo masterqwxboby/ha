@@ -7,17 +7,11 @@ local function highlight(player)
   highLight.OutLineColor = Color3.fromRGB(255,0,0)
 end
 
- for _, player in ipairs(Players:GetPlayers()) do
-    if not player.Character:FindFirstChild("Highlight") then
-      highlight(player)
-    end
-  end
 
-while wait(5) do
-  for _, player in ipairs(Players:GetPlayers()) do
-    if not player.Character:FindFirstChild("Highlight") then
-      highlight(player)
-    end
-  end
-end
+Players.PlayerAdded:Connect(function(player)
+    player.CharacterAdded:Connect(function(character)
+        wait(1)
+        hightlight(player)
+     end)
+ end)
   
